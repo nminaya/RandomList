@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace RandomList.Core
 {
-	public class RandomList<T> : IList<T> where T : class
+	public class RandomList<T> : IList<T>
 	{
 		private readonly List<T> _list = new List<T>();
 
