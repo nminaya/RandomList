@@ -103,6 +103,7 @@ namespace RandomList.Core
 
 		public void Insert(int index, T item)
 		{
+			//TODO: Handle insert element correctly
 			_list.Insert(index, item);
 			_randomIndexs = BuildRandomNumbers();
 		}
@@ -131,8 +132,7 @@ namespace RandomList.Core
 		/// <param name="index">The zero-based index of the element to remove</param>
 		public void RemoveAt(int index)
 		{
-			//TODO: fix remove at index
-			_list.RemoveAt(index);
+			_list.RemoveAt(_randomIndexs[index]);
 			_randomIndexs = BuildRandomNumbers();
 		}
 
