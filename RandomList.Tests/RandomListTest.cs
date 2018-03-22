@@ -139,5 +139,18 @@ namespace RandomList.Tests
 			// Assert
 			Assert.False(result);
 		}
+
+		[Fact]
+		public void Casting_List_To_RandomList()
+		{
+			// Act
+			var list = new List<int>() { 1, 2, 3, 4, 5, 6 };
+
+			// Act
+			RandomList<int> randList = list;
+
+			// Assert
+			Assert.True(list.Count == randList.Count);
+		}
 	}
 }
