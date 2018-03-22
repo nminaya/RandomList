@@ -41,6 +41,17 @@ namespace RandomList.Core
 		}
 
 		/// <summary>
+		/// Initializes a new instance of RandomList class with given list
+		/// initial capacity
+		/// </summary>
+		/// <param name="list">List</param>
+		public RandomList(List<T> list)
+		{
+			_list = list;
+			_randomIndexs = BuildRandomNumbers();
+		}
+
+		/// <summary>
 		/// Gets the number of elements contained in the RandomList
 		/// </summary>
 		public int Count => _list.Count;
@@ -116,7 +127,7 @@ namespace RandomList.Core
 		/// </returns>
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			return this.GetEnumerator();
+			return new Enumerator(_list, _randomIndexs);
 		}
 
 		/// <summary>
@@ -149,6 +160,62 @@ namespace RandomList.Core
 			}
 
 			return nums;
+		}
+
+		/// <summary>
+		/// Implicit cast
+		/// </summary>
+		/// <param name="list">List</param>
+		public static implicit operator RandomList<T>(List<T> list)
+		{
+			return new RandomList<T>(list);
+		}
+
+		public struct Enumerator : IEnumerator<T>
+		{
+			private readonly List<T> _list;
+
+			private readonly int[] _randomIndexs;
+
+			private int _cursor;
+
+			public Enumerator(List<T> list, int[] randomIndexs)
+			{
+				_list = list;
+				_randomIndexs = randomIndexs;
+				_cursor = -1;
+			}
+
+			public T Current
+			{
+				get
+				{
+					if ((_cursor < 0) || (_cursor == _list.Count))
+						throw new InvalidOperationException();
+
+					return _list[_randomIndexs[_cursor]];
+				}
+			}
+
+			object IEnumerator.Current => this.Current;
+
+			public void Dispose()
+			{
+				_list.GetEnumerator().Dispose();
+			}
+
+			public bool MoveNext()
+			{
+				if (_cursor < _list.Count)
+					_cursor++;
+
+				return _cursor != _list.Count;
+			}
+
+			public void Reset()
+			{
+
+			}
 		}
 	}
 }
