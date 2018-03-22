@@ -98,7 +98,13 @@ namespace RandomList.Core
 		/// must have zero-basedindexing
 		/// </param>
 		/// <param name="arrayIndex">The zero-based index in array at which copying begins</param>
-		public void CopyTo(T[] array, int arrayIndex) => _list.CopyTo(array, arrayIndex);
+		public void CopyTo(T[] array, int arrayIndex)
+		{
+			for (int i = arrayIndex, j = 0; i < _list.Count; i++, j++)
+			{
+				array[i] = _list[_randomIndexs[j]];
+			}
+		}
 
 		/// <summary>
 		/// Removes the first occurrence of a specific object from the RandomList
