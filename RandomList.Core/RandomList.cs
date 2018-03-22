@@ -68,7 +68,7 @@ namespace RandomList.Core
 		public void Add(T item)
 		{
 			_list.Add(item);
-			_randomIndexs = BuildRandomNumbers();
+			_randomIndexs = BuildRandomNumbers(); // Reorganize indexs
 		}
 
 		/// <summary>
