@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace RandomList.Core
 {
-	/// <summary>
-	/// RandomList
-	/// </summary>
-	/// <typeparam name="T">Generic Type</typeparam>
-	public class RandomList<T> : ICollection<T>
+    /// <summary>
+    /// Represents a Collection of objects that can interate randomly
+    /// </summary>
+    /// <typeparam name="T">The type of elements in the collection</typeparam>
+    public class RandomList<T> : ICollection<T>
 	{
 		private readonly List<T> _list = new List<T>();
 
@@ -31,7 +31,7 @@ namespace RandomList.Core
 		}
 
 		/// <summary>
-		/// Initializes a new instance of RandomList class that
+		/// Initializes a new instance of Collection class that
 		/// is empty and has the default 
 		/// initial capacity
 		/// </summary>
@@ -41,7 +41,7 @@ namespace RandomList.Core
 		}
 
 		/// <summary>
-		/// Initializes a new instance of RandomList class with given list
+		/// Initializes a new instance of Collection class with given list
 		/// initial capacity
 		/// </summary>
 		/// <param name="list">List</param>
@@ -52,12 +52,12 @@ namespace RandomList.Core
 		}
 
 		/// <summary>
-		/// Gets the number of elements contained in the RandomList
+		/// Gets the number of elements contained in the Collection
 		/// </summary>
 		public int Count => _list.Count;
 
 		/// <summary>
-		/// RandomList is not a ReadOnly List
+		/// Collection is not a ReadOnly List
 		/// </summary>
 		public bool IsReadOnly => false;
 
@@ -81,20 +81,20 @@ namespace RandomList.Core
 		}
 
 		/// <summary>
-		/// Determines whether an element is in the RandomList
+		/// Determines whether an element is in the Collection
 		/// </summary>
-		/// <param name="item">The object to locate in the RandomList</param>
-		/// <returns>true if item is found in the RandomList</returns>
+		/// <param name="item">The object to locate in the Collection</param>
+		/// <returns>true if item is found in the Collection</returns>
 		public bool Contains(T item) => _list.Contains(item);
 
 		/// <summary>
-		/// Copies the entire RandomList to a compatible one-dimensional
+		/// Copies the entire Collection to a compatible one-dimensional
 		/// array, starting at the specified index 
 		/// of the target array.
 		/// </summary>
 		/// <param name="array">
 		/// The one-dimensional System.Array that is the destination of the elements copied
-		/// from RandomList. The System.Array 
+		/// from Collection. The System.Array 
 		/// must have zero-basedindexing
 		/// </param>
 		/// <param name="arrayIndex">The zero-based index in array at which copying begins</param>
@@ -107,10 +107,10 @@ namespace RandomList.Core
 		}
 
 		/// <summary>
-		/// Removes the first occurrence of a specific object from the RandomList
+		/// Removes the first occurrence of a specific object from the Collection
 		/// </summary>
 		/// <param name="item">
-		/// The object to remove from the RandomList. The value can
+		/// The object to remove from the Collection. The value can
 		/// be null for reference types
 		/// </param>
 		/// <returns>true if item is successfully removed</returns>
@@ -178,7 +178,7 @@ namespace RandomList.Core
 		}
 
 		public struct Enumerator : IEnumerator<T>
-		{
+        {
 			private readonly List<T> _list;
 
 			private readonly int[] _randomIndexs;
@@ -192,6 +192,9 @@ namespace RandomList.Core
 				_cursor = -1;
 			}
 
+            /// <summary>
+            /// Gets the element in the collection at the current position of the enumerator
+            /// </summary>
 			public T Current
 			{
 				get
@@ -203,6 +206,9 @@ namespace RandomList.Core
 				}
 			}
 
+            /// <summary>
+            /// Gets the element in the collection at the current position of the enumerator
+            /// </summary>
 			object IEnumerator.Current => this.Current;
 
 			public void Dispose()
@@ -210,6 +216,10 @@ namespace RandomList.Core
 				_list.GetEnumerator().Dispose();
 			}
 
+            /// <summary>
+            /// Advances the enumerator to the next element of the collection
+            /// </summary>
+            /// <returns>true if the enumerator was successfully advanced to the next element</returns>
 			public bool MoveNext()
 			{
 				if (_cursor < _list.Count)
@@ -218,10 +228,13 @@ namespace RandomList.Core
 				return _cursor != _list.Count;
 			}
 
-			public void Reset()
-			{
-
-			}
-		}
+            /// <summary>
+            /// Sets the enumerator to its initial position
+            /// </summary>
+            public void Reset()
+            {
+                _cursor = -1;
+            }
+        }
 	}
 }
