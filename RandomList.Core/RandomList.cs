@@ -9,7 +9,7 @@ namespace RandomList.Core
 	/// RandomList
 	/// </summary>
 	/// <typeparam name="T">Generic Type</typeparam>
-	public class RandomList<T> : IList<T>
+	public class RandomList<T> : ICollection<T>
 	{
 		private readonly List<T> _list = new List<T>();
 
@@ -90,25 +90,6 @@ namespace RandomList.Core
 		public void CopyTo(T[] array, int arrayIndex) => _list.CopyTo(array, arrayIndex);
 
 		/// <summary>
-		/// Searches for the specified object and returns the zero-based index of the first
-		/// occurrence within the entire RandomList
-		/// </summary>
-		/// <param name="item">The object to locate in the RandomList</param>
-		/// <returns>
-		/// The zero-based index of the first occurrence 
-		/// of item within the entire RandomList,
-		/// if not found; –1
-		/// </returns>
-		public int IndexOf(T item) => _list.IndexOf(item);
-
-		public void Insert(int index, T item)
-		{
-			//TODO: Handle insert element correctly
-			_list.Insert(index, item);
-			_randomIndexs = BuildRandomNumbers();
-		}
-
-		/// <summary>
 		/// Removes the first occurrence of a specific object from the RandomList
 		/// </summary>
 		/// <param name="item">
@@ -124,16 +105,6 @@ namespace RandomList.Core
 				_randomIndexs = BuildRandomNumbers();
 
 			return removedOk;
-		}
-
-		/// <summary>
-		/// Removes the element at the specified index of the RandomList.
-		/// </summary>
-		/// <param name="index">The zero-based index of the element to remove</param>
-		public void RemoveAt(int index)
-		{
-			_list.RemoveAt(_randomIndexs[index]);
-			_randomIndexs = BuildRandomNumbers();
 		}
 
 		/// <summary>
