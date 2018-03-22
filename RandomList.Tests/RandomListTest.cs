@@ -152,5 +152,22 @@ namespace RandomList.Tests
 			// Assert
 			Assert.True(list.Count == randList.Count);
 		}
+
+		[Fact]
+		public void Array_CopyTo()
+		{
+			// Arrange
+			var randList = new RandomList<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+			var array = new int[10];
+
+			// Act
+			randList.CopyTo(array, 0);
+
+			// Assert
+			for (int i = 0; i < array.Length; i++)
+			{
+				Assert.True(randList[i] == array[i]);
+			}
+		}
 	}
 }
