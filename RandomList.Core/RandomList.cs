@@ -6,7 +6,7 @@ using System.Linq;
 namespace RandomList.Core
 {
 	/// <summary>
-	/// Represents a Collection of objects that can interate randomly
+	/// Represents a Collection of objects that can be interated randomly
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the collection</typeparam>
 	public class RandomList<T> : ICollection<T>
@@ -25,9 +25,14 @@ namespace RandomList.Core
 		/// <returns>The element at the specified index</returns>
 		public T this[int index]
 		{
-			//TODO: throw ArgumentOutOfRangeException if index is out of range
-			get => _list[_randomIndexs[index]];
-			set => _list[_randomIndexs[index]] = value;
+			get => (index > _list.Count || index < 0) ? throw new IndexOutOfRangeException() : _list[_randomIndexs[index]];
+			set
+			{
+				if (index > _list.Count || index < 0)
+					throw new IndexOutOfRangeException();
+
+				_list[_randomIndexs[index]] = value;
+			}
 		}
 
 		/// <summary>
