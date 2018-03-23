@@ -14,7 +14,7 @@ namespace RandomList.Core
 		private readonly List<T> _list = new List<T>();
 
 		/// <summary>
-		/// Array of random number for list indexs
+		/// Array of random numbers for indexs
 		/// </summary>
 		private int[] _randomIndexs;
 
@@ -37,7 +37,7 @@ namespace RandomList.Core
 		/// </summary>
 		public RandomList()
 		{
-			_randomIndexs = BuildRandomNumbers();
+			_randomIndexs = BuildRandomIndexs();
 		}
 
 		/// <summary>
@@ -47,7 +47,7 @@ namespace RandomList.Core
 		public RandomList(IEnumerable<T> list)
 		{
 			_list = list.ToList();
-			_randomIndexs = BuildRandomNumbers();
+			_randomIndexs = BuildRandomIndexs();
 		}
 
 		/// <summary>
@@ -67,7 +67,7 @@ namespace RandomList.Core
 		public void Add(T item)
 		{
 			_list.Add(item);
-			_randomIndexs = BuildRandomNumbers(); // Reorganize indexs
+			_randomIndexs = BuildRandomIndexs(); // Reorganize indexs
 		}
 
 		/// <summary>
@@ -76,7 +76,7 @@ namespace RandomList.Core
 		public void Clear()
 		{
 			_list.Clear();
-			_randomIndexs = BuildRandomNumbers();
+			_randomIndexs = BuildRandomIndexs();
 		}
 
 		/// <summary>
@@ -118,9 +118,17 @@ namespace RandomList.Core
 			bool removedOk = _list.Remove(item);
 
 			if (removedOk)
-				_randomIndexs = BuildRandomNumbers();
+				_randomIndexs = BuildRandomIndexs();
 
 			return removedOk;
+		}
+
+		/// <summary>
+		/// Randomize the collection again
+		/// </summary>
+		public void Randomize()
+		{
+			_randomIndexs = BuildRandomIndexs();
 		}
 
 		/// <summary>
@@ -151,7 +159,7 @@ namespace RandomList.Core
 		/// Generate an int array of random numbers
 		/// </summary>
 		/// <returns>array of random numbers</returns>
-		private int[] BuildRandomNumbers()
+		private int[] BuildRandomIndexs()
 		{
 			var nums = Enumerable.Range(0, _list.Count).ToArray();
 			var rnd = new Random();
@@ -180,8 +188,14 @@ namespace RandomList.Core
         {
 			private readonly List<T> _list;
 
+			/// <summary>
+			/// Array of random numbers for indexs
+			/// </summary>
 			private readonly int[] _randomIndexs;
 
+			/// <summary>
+			/// Current index
+			/// </summary>
 			private int _cursor;
 
 			public Enumerator(List<T> list, int[] randomIndexs)
