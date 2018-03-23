@@ -162,6 +162,20 @@ namespace RandomList.Tests
 			Assert.False(result);
 		}
 
+		[Fact(DisplayName = nameof(Enumerator_MoveNext_NotEmptyList))]
+		public void Enumerator_MoveNext_NotEmptyList()
+		{
+			// Arrange
+			var randList = new RandomList<int> { 1, 2, 3 };
+			var enumerator = randList.GetEnumerator();
+
+			// Act
+			bool result = enumerator.MoveNext();
+
+			// Assert
+			Assert.True(result);
+		}
+
 		[Fact(DisplayName = nameof(Enumerator_MoveNextThroughCollection))]
 		public void Enumerator_MoveNextThroughCollection()
 		{
