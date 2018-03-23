@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace RandomList.Core
 {
-    /// <summary>
-    /// Represents a Collection of objects that can interate randomly
-    /// </summary>
-    /// <typeparam name="T">The type of elements in the collection</typeparam>
-    public class RandomList<T> : ICollection<T>
+	/// <summary>
+	/// Represents a Collection of objects that can interate randomly
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the collection</typeparam>
+	public class RandomList<T> : ICollection<T>
 	{
 		private readonly List<T> _list = new List<T>();
 
@@ -185,7 +185,7 @@ namespace RandomList.Core
 		}
 
 		public struct Enumerator : IEnumerator<T>
-        {
+		{
 			private readonly List<T> _list;
 
 			/// <summary>
@@ -205,9 +205,9 @@ namespace RandomList.Core
 				_cursor = -1;
 			}
 
-            /// <summary>
-            /// Gets the element in the collection at the current position of the enumerator
-            /// </summary>
+			/// <summary>
+			/// Gets the element in the collection at the current position of the enumerator
+			/// </summary>
 			public T Current
 			{
 				get
@@ -219,9 +219,9 @@ namespace RandomList.Core
 				}
 			}
 
-            /// <summary>
-            /// Gets the element in the collection at the current position of the enumerator
-            /// </summary>
+			/// <summary>
+			/// Gets the element in the collection at the current position of the enumerator
+			/// </summary>
 			object IEnumerator.Current => this.Current;
 
 			public void Dispose()
@@ -229,10 +229,10 @@ namespace RandomList.Core
 				_list.GetEnumerator().Dispose();
 			}
 
-            /// <summary>
-            /// Advances the enumerator to the next element of the collection
-            /// </summary>
-            /// <returns>true if the enumerator was successfully advanced to the next element</returns>
+			/// <summary>
+			/// Advances the enumerator to the next element of the collection
+			/// </summary>
+			/// <returns>true if the enumerator was successfully advanced to the next element</returns>
 			public bool MoveNext()
 			{
 				if (_cursor < _list.Count)
@@ -241,13 +241,13 @@ namespace RandomList.Core
 				return _cursor != _list.Count;
 			}
 
-            /// <summary>
-            /// Sets the enumerator to its initial position
-            /// </summary>
-            public void Reset()
-            {
-                _cursor = -1;
-            }
-        }
+			/// <summary>
+			/// Sets the enumerator to its initial position
+			/// </summary>
+			public void Reset()
+			{
+				_cursor = -1;
+			}
+		}
 	}
 }
