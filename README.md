@@ -14,4 +14,4 @@ Use:
 ```
 Then, when you iterate this collection:
 
-![alt text](https://lut.im/6dBYNq44bC/hHiGOXB6Mom29pA5.png)
+![alt text](https://lut.im/qOAfeSWmaX/epGiOnVaofK7kcRo.png)
