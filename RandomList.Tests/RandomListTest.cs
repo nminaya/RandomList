@@ -37,32 +37,22 @@ namespace RandomList.Tests
 			Assert.True(itemsCount == randList.Count);
 		}
 
-		[Fact(DisplayName = nameof(Removing_OneItem))]
-		public void Removing_OneItem()
-		{
-			// Arrange
-			var randList = new RandomList<int> { 1 };
-
-			// Act
-			randList.Remove(1);
-
-			// Assert
-			Assert.True(0 == randList.Count);
-		}
-
-		[Fact(DisplayName = nameof(Removing_10Items))]
-		public void Removing_10Items()
+		[Theory]
+		[InlineData(1)]
+		[InlineData(100)]
+		[InlineData(1000)]
+		public void RemovingItems(int itemsCount)
 		{
 			// Arrange
 			var randList = new RandomList<int>();
 
-			for (int i = 0; i < 10; i++)
+			for (int i = 0; i < itemsCount; i++)
 			{
 				randList.Add(i);
 			}
 
 			// Act
-			for (int i = 0; i < 10; i++)
+			for (int i = 0; i < itemsCount; i++)
 			{
 				randList.Remove(i);
 			}
