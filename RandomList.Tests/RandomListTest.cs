@@ -15,80 +15,44 @@ namespace RandomList.Tests
 			var randList = new RandomList<int>();
 
 			// Assert
-			Assert.NotNull(randList);
+			Assert.True(randList.Count == 0);
 		}
 
-		[Fact(DisplayName = nameof(Adding_OneItem))]
-		public void Adding_OneItem()
+		[Theory]
+		[InlineData(1)]
+		[InlineData(100)]
+		[InlineData(1000)]
+		public void AddingItems(int itemsCount)
 		{
 			// Arrange
 			var randList = new RandomList<int>();
 
 			// Act
-			randList.Add(5);
-
-			// Assert
-			Assert.True(1 == randList.Count);
-		}
-
-		[Fact(DisplayName = nameof(Adding_100Items))]
-		public void Adding_100Items()
-		{
-			// Arrange
-			var randList = new RandomList<int>();
-
-			// Act
-			for (int i = 0; i < 100; i++)
+			for (int i = 0; i < itemsCount; i++)
 			{
 				randList.Add(i);
 			}
 
 			// Assert
-			Assert.True(100 == randList.Count);
+			Assert.True(itemsCount == randList.Count);
 		}
 
-		[Fact(DisplayName = nameof(Adding_1000Items))]
-		public void Adding_1000Items()
+		[Theory]
+		[InlineData(1)]
+		[InlineData(100)]
+		[InlineData(1000)]
+		public void RemovingItems(int itemsCount)
 		{
 			// Arrange
 			var randList = new RandomList<int>();
 
-			// Act
-			for (int i = 0; i < 1000; i++)
-			{
-				randList.Add(i);
-			}
-
-			// Assert
-			Assert.True(1000 == randList.Count);
-		}
-
-		[Fact(DisplayName = nameof(Removing_OneItem))]
-		public void Removing_OneItem()
-		{
-			// Arrange
-			var randList = new RandomList<int> { 1 };
-
-			// Act
-			randList.Remove(1);
-
-			// Assert
-			Assert.True(0 == randList.Count);
-		}
-
-		[Fact(DisplayName = nameof(Removing_10Items))]
-		public void Removing_10Items()
-		{
-			// Arrange
-			var randList = new RandomList<int>();
-
-			for (int i = 0; i < 10; i++)
+			for (int i = 0; i < itemsCount; i++)
 			{
 				randList.Add(i);
 			}
 
 			// Act
-			for (int i = 0; i < 10; i++)
+			for (int i = 0; i < itemsCount; i++)
 			{
 				randList.Remove(i);
 			}
@@ -148,7 +112,7 @@ namespace RandomList.Tests
 			var list = new List<int>() { 1, 2, 3, 4, 5, 6 };
 
 			// Act
-			RandomList<int> randList = list;
+			RandomList<int> randList = list; //Implicit cast
 
 			// Assert
 			Assert.True(list.Count == randList.Count);
@@ -194,7 +158,7 @@ namespace RandomList.Tests
 		{
 			// Arrange
 			var randList = new RandomList<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-			var randListBeforeReorder = randList.ToArray();
+			var randListBeforeRandomize = randList.ToArray();
 			var equalValues = new bool[10];
 
 			// Act
@@ -203,7 +167,7 @@ namespace RandomList.Tests
 			// Assert
 			for (int i = 0; i < randList.Count; i++)
 			{
-				equalValues[i] = randList[i] == randListBeforeReorder[i];
+				equalValues[i] = randList[i] == randListBeforeRandomize[i];
 			}
 
 			// Ok if contains any false value
@@ -217,7 +181,7 @@ namespace RandomList.Tests
 			var randList = new RandomList<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
 			// Act
-			Action action = () => 
+			Action action = () =>
 			{
 				var value = randList[-5];
 			};
