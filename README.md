@@ -14,6 +14,6 @@ Use:
 ```
 Then, when the collection is iterated:
 
-![example](https://lut.im/qOAfeSWmaX/epGiOnVaofK7kcRo.png)
+![example](https://lut.im/xFNQPeDzgB/V3RbzPwjKCv0KEp1.png)
 
 The elements are not in the same order in wich they were added. That's because RandomList randomizes the order of the elements.
