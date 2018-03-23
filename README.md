@@ -4,7 +4,7 @@ RandomList it's basically a Collection of items that can be iterated randomly.
 Use:
 
 ```csharp
-   // Creating a RandomList of int items
+   // Creating a RandomList of string 
    var randomList = new RandomList<string>();
 
    // Adding items
