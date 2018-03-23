@@ -5,10 +5,13 @@ Use:
 
 ```csharp
    // Creating a RandomList of int items
-   var randomList = new RandomList<int>();
-   
+   var randomList = new RandomList<string>();
+
    // Adding items
-   randomList.Add(1);
-   randomList.Add(2);
-   randomList.Add(3);
+   randomList.Add("First");
+   randomList.Add("Second");
+   randomList.Add("Third");
 ```
+Then, when you iterate this collection:
+
+![alt text](https://lut.im/6dBYNq44bC/hHiGOXB6Mom29pA5.png)
