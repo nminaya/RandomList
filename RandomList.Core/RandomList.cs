@@ -31,7 +31,7 @@ namespace RandomList.Core
 		}
 
 		/// <summary>
-		/// Initializes a new instance of Collection class that
+		/// Initializes a new instance of RandomList class that
 		/// is empty and has the default 
 		/// initial capacity
 		/// </summary>
@@ -41,13 +41,12 @@ namespace RandomList.Core
 		}
 
 		/// <summary>
-		/// Initializes a new instance of Collection class with given list
-		/// initial capacity
+		/// Initializes a new instance of RandomList class with the given Collection
 		/// </summary>
 		/// <param name="list">List</param>
-		public RandomList(List<T> list)
+		public RandomList(IEnumerable<T> list)
 		{
-			_list = list;
+			_list = list.ToList();
 			_randomIndexs = BuildRandomNumbers();
 		}
 
