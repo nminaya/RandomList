@@ -135,6 +135,33 @@ namespace RandomList.Tests
 			}
 		}
 
+		[Fact(DisplayName = nameof(Enumerator_GetEnumerator))]
+		public void Enumerator_GetEnumerator()
+		{
+			// Arrange
+			var randList = new RandomList<int>() { 1, 2, 3 };
+
+			// Act
+			var enumerator = randList.GetEnumerator();
+
+			// Assert
+			Assert.NotNull(enumerator);
+		}
+
+		[Fact(DisplayName = nameof(Enumerator_MoveNext_EmptyList))]
+		public void Enumerator_MoveNext_EmptyList()
+		{
+			// Arrange
+			var randList = new RandomList<int>();
+			var enumerator = randList.GetEnumerator();
+
+			// Act
+			bool result = enumerator.MoveNext();
+
+			// Assert
+			Assert.False(result);
+		}
+
 		[Fact(DisplayName = nameof(Enumerator_MoveNextThroughCollection))]
 		public void Enumerator_MoveNextThroughCollection()
 		{
