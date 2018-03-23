@@ -12,6 +12,9 @@ Use:
    randomList.Add("Second");
    randomList.Add("Third");
 ```
-Then, when you iterate this collection:
+Then, when the collection is iterated:
 
-![alt text](https://lut.im/qOAfeSWmaX/epGiOnVaofK7kcRo.png)
+![example](https://lut.im/qOAfeSWmaX/epGiOnVaofK7kcRo.png)
+
+The elements are not in the same order in wich they were added.
+
