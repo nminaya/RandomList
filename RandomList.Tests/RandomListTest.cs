@@ -170,8 +170,8 @@ namespace RandomList.Tests
             }
         }
 
-        [Fact(DisplayName = nameof(Testing_Enumerator))]
-        public void Testing_Enumerator()
+        [Fact(DisplayName = nameof(Enumerator_MoveNextThroughCollection))]
+        public void Enumerator_MoveNextThroughCollection()
         {
             // Arrange
             var randList = new RandomList<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
