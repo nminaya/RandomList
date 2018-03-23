@@ -16,5 +16,4 @@ Then, when the collection is iterated:
 
 ![example](https://lut.im/qOAfeSWmaX/epGiOnVaofK7kcRo.png)
 
-The elements are not in the same order in wich they were added.
-
+The elements are not in the same order in wich they were added. That's because RandomList randomizes the order of the elements.
