@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using RandomList.Core;
@@ -207,6 +208,70 @@ namespace RandomList.Tests
 
 			// Ok if contains any false value
 			Assert.Contains(equalValues, v => !v);
+		}
+
+		[Fact(DisplayName = nameof(Indexs_GettingValues_OutOfRange_NegativeIndex))]
+		public void Indexs_GettingValues_OutOfRange_NegativeIndex()
+		{
+			// Arrange
+			var randList = new RandomList<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+			// Act
+			Action action = () => 
+			{
+				var value = randList[-5];
+			};
+
+			// Assert
+			Assert.Throws<IndexOutOfRangeException>(action);
+		}
+
+		[Fact(DisplayName = nameof(Indexs_GettingValues_OutOfRange_IndexBiggerThanLength))]
+		public void Indexs_GettingValues_OutOfRange_IndexBiggerThanLength()
+		{
+			// Arrange
+			var randList = new RandomList<int> { 1, 2 };
+
+			// Act
+			Action action = () =>
+			{
+				var value = randList[2];
+			};
+
+			// Assert
+			Assert.Throws<IndexOutOfRangeException>(action);
+		}
+
+		[Fact(DisplayName = nameof(Indexs_SettingValues_OutOfRange_NegativeIndex))]
+		public void Indexs_SettingValues_OutOfRange_NegativeIndex()
+		{
+			// Arrange
+			var randList = new RandomList<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+			// Act
+			Action action = () =>
+			{
+				randList[-5] = 10;
+			};
+
+			// Assert
+			Assert.Throws<IndexOutOfRangeException>(action);
+		}
+
+		[Fact(DisplayName = nameof(Indexs_SettingValues_OutOfRange_IndexBiggerThanLength))]
+		public void Indexs_SettingValues_OutOfRange_IndexBiggerThanLength()
+		{
+			// Arrange
+			var randList = new RandomList<int> { 1, 2 };
+
+			// Act
+			Action action = () =>
+			{
+				randList[2] = 100;
+			};
+
+			// Assert
+			Assert.Throws<IndexOutOfRangeException>(action);
 		}
 	}
 }
