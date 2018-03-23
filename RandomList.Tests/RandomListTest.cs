@@ -18,49 +18,23 @@ namespace RandomList.Tests
 			Assert.NotNull(randList);
 		}
 
-		[Fact(DisplayName = nameof(Adding_OneItem))]
-		public void Adding_OneItem()
+		[Theory]
+		[InlineData(1)]
+		[InlineData(100)]
+		[InlineData(1000)]
+		public void AddingItems(int itemsCount)
 		{
 			// Arrange
 			var randList = new RandomList<int>();
 
 			// Act
-			randList.Add(5);
-
-			// Assert
-			Assert.True(1 == randList.Count);
-		}
-
-		[Fact(DisplayName = nameof(Adding_100Items))]
-		public void Adding_100Items()
-		{
-			// Arrange
-			var randList = new RandomList<int>();
-
-			// Act
-			for (int i = 0; i < 100; i++)
+			for (int i = 0; i < itemsCount; i++)
 			{
 				randList.Add(i);
 			}
 
 			// Assert
-			Assert.True(100 == randList.Count);
-		}
-
-		[Fact(DisplayName = nameof(Adding_1000Items))]
-		public void Adding_1000Items()
-		{
-			// Arrange
-			var randList = new RandomList<int>();
-
-			// Act
-			for (int i = 0; i < 1000; i++)
-			{
-				randList.Add(i);
-			}
-
-			// Assert
-			Assert.True(1000 == randList.Count);
+			Assert.True(itemsCount == randList.Count);
 		}
 
 		[Fact(DisplayName = nameof(Removing_OneItem))]
