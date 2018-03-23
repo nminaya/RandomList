@@ -15,7 +15,7 @@ namespace RandomList.Tests
 			var randList = new RandomList<int>();
 
 			// Assert
-			Assert.NotNull(randList);
+			Assert.True(randList.Count == 0);
 		}
 
 		[Theory]
@@ -112,7 +112,7 @@ namespace RandomList.Tests
 			var list = new List<int>() { 1, 2, 3, 4, 5, 6 };
 
 			// Act
-			RandomList<int> randList = list;
+			RandomList<int> randList = list; //Implicit cast
 
 			// Assert
 			Assert.True(list.Count == randList.Count);
@@ -158,7 +158,7 @@ namespace RandomList.Tests
 		{
 			// Arrange
 			var randList = new RandomList<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-			var randListBeforeReorder = randList.ToArray();
+			var randListBeforeRandomize = randList.ToArray();
 			var equalValues = new bool[10];
 
 			// Act
@@ -167,7 +167,7 @@ namespace RandomList.Tests
 			// Assert
 			for (int i = 0; i < randList.Count; i++)
 			{
-				equalValues[i] = randList[i] == randListBeforeReorder[i];
+				equalValues[i] = randList[i] == randListBeforeRandomize[i];
 			}
 
 			// Ok if contains any false value
@@ -181,7 +181,7 @@ namespace RandomList.Tests
 			var randList = new RandomList<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
 			// Act
-			Action action = () => 
+			Action action = () =>
 			{
 				var value = randList[-5];
 			};
