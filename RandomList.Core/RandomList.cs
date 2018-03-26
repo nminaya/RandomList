@@ -51,6 +51,9 @@ namespace RandomList.Core
 		/// <param name="list">List</param>
 		public RandomList(IEnumerable<T> list)
 		{
+			if (list == null)
+				throw new ArgumentNullException(nameof(list));
+
 			_list = list.ToList();
 			_randomIndexs = BuildRandomIndexs();
 		}
