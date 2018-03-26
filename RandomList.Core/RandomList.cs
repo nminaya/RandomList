@@ -131,10 +131,7 @@ namespace RandomList.Core
 		/// <summary>
 		/// Randomize the collection again
 		/// </summary>
-		public void Randomize()
-		{
-			_randomIndexs = BuildRandomIndexs();
-		}
+		public void Randomize() => _randomIndexs = BuildRandomIndexs();
 
 		/// <summary>
 		/// Returns an enumerator that iterates through the collection
