@@ -15,9 +15,10 @@ namespace RandomList.Tests
 
 			// Act
 			randList[5] = 20;
+			int value = randList[5];
 
 			// Assert
-			Assert.True(randList[5] == 20);
+			Assert.True(value == 20);
 		}
 
 		[Fact(DisplayName = nameof(GettingValues_OutOfRange_NegativeIndex))]
