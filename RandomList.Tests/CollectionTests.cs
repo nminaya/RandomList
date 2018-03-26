@@ -8,7 +8,7 @@ namespace RandomList.Tests
 {
     public class CollectionTests
     {
-		[Theory]
+		[Theory(DisplayName = nameof(AddingItems))]
 		[InlineData(1)]
 		[InlineData(100)]
 		[InlineData(1000)]
@@ -27,7 +27,7 @@ namespace RandomList.Tests
 			Assert.True(itemsCount == randList.Count);
 		}
 
-		[Theory]
+		[Theory(DisplayName =nameof(RemovingItems))]
 		[InlineData(1)]
 		[InlineData(100)]
 		[InlineData(1000)]
