@@ -18,6 +18,35 @@ namespace RandomList.Tests
 			Assert.True(randList.Count == 0);
 		}
 
+		[Fact(DisplayName = nameof(CreatingInstance_Passing_IEnumerable))]
+		public void CreatingInstance_Passing_IEnumerable()
+		{
+			// Arrange
+			var list = Enumerable.Range(0, 10);
+
+			// Act
+			var randList = new RandomList<int>(list);
+
+			// Assert
+			Assert.True(randList.Count == list.Count());
+		}
+
+		[Fact(DisplayName = nameof(CreatingInstance_Passing_Null_IEnumerable))]
+		public void CreatingInstance_Passing_Null_IEnumerable()
+		{
+			// Arrange
+			IEnumerable<int> list = null;
+
+			// Act
+			Action action = () =>
+			{
+				var randList = new RandomList<int>(list);
+			};
+
+			// Assert
+			Assert.Throws<ArgumentNullException>(action);
+		}
+
 		[Fact(DisplayName = nameof(Casting_List_To_RandomList))]
 		public void Casting_List_To_RandomList()
 		{

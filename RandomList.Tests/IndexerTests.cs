@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using RandomList.Core;
 using Xunit;
 
@@ -6,6 +7,19 @@ namespace RandomList.Tests
 {
 	public class IndexerTests
 	{
+		[Fact(DisplayName = nameof(Setting_And_Getting_Value))]
+		public void Setting_And_Getting_Value()
+		{
+			// Arrange
+			var randList = new RandomList<int>(Enumerable.Range(0,10));
+
+			// Act
+			randList[5] = 20;
+
+			// Assert
+			Assert.True(randList[5] == 20);
+		}
+
 		[Fact(DisplayName = nameof(GettingValues_OutOfRange_NegativeIndex))]
 		public void GettingValues_OutOfRange_NegativeIndex()
 		{
