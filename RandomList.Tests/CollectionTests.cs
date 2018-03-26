@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using RandomList.Core;
+﻿using RandomList.Core;
 using Xunit;
 
 namespace RandomList.Tests
 {
-    public class CollectionTests
-    {
+	public class CollectionTests
+	{
 		[Theory(DisplayName = nameof(AddingItems))]
 		[InlineData(1)]
 		[InlineData(100)]
@@ -27,7 +24,7 @@ namespace RandomList.Tests
 			Assert.True(itemsCount == randList.Count);
 		}
 
-		[Theory(DisplayName =nameof(RemovingItems))]
+		[Theory(DisplayName = nameof(RemovingItems))]
 		[InlineData(1)]
 		[InlineData(100)]
 		[InlineData(1000)]
@@ -108,6 +105,7 @@ namespace RandomList.Tests
 			// Assert
 			for (int i = 0; i < array.Length; i++)
 			{
+				// Comparing each element in randList with the array
 				Assert.True(randList[i] == array[i]);
 			}
 		}
