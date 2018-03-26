@@ -1,4 +1,5 @@
-﻿using RandomList.Core;
+﻿using System.Collections;
+using RandomList.Core;
 using Xunit;
 
 namespace RandomList.Tests
@@ -18,8 +19,8 @@ namespace RandomList.Tests
 			Assert.NotNull(enumerator);
 		}
 
-		[Fact(DisplayName = nameof(MoveNext_EmptyList))]
-		public void MoveNext_EmptyList()
+		[Fact(DisplayName = nameof(MoveNext_On_EmptyList))]
+		public void MoveNext_On_EmptyList()
 		{
 			// Arrange
 			var randList = new RandomList<int>();
@@ -32,8 +33,8 @@ namespace RandomList.Tests
 			Assert.False(result);
 		}
 
-		[Fact(DisplayName = nameof(MoveNext_NotEmptyList))]
-		public void MoveNext_NotEmptyList()
+		[Fact(DisplayName = nameof(MoveNext__On_NotEmptyList))]
+		public void MoveNext__On_NotEmptyList()
 		{
 			// Arrange
 			var randList = new RandomList<int> { 1, 2, 3 };
@@ -46,8 +47,8 @@ namespace RandomList.Tests
 			Assert.True(result);
 		}
 
-		[Fact(DisplayName = nameof(MoveNextThroughCollection))]
-		public void MoveNextThroughCollection()
+		[Fact(DisplayName = nameof(MoveNext_ThroughCollection))]
+		public void MoveNext_ThroughCollection()
 		{
 			// Arrange
 			var randList = new RandomList<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
