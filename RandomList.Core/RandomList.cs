@@ -140,10 +140,7 @@ namespace RandomList.Core
 		/// An System.Collections.IEnumerator object that can be 
 		/// used to iterate through the collection
 		/// </returns>
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return new Enumerator(_list, _randomIndexs);
-		}
+		IEnumerator IEnumerable.GetEnumerator() => new Enumerator(_list, _randomIndexs);
 
 		/// <summary>
 		/// Returns an enumerator that iterates through the collection
@@ -181,10 +178,7 @@ namespace RandomList.Core
 		/// Implicit cast
 		/// </summary>
 		/// <param name="list">List</param>
-		public static implicit operator RandomList<T>(List<T> list)
-		{
-			return new RandomList<T>(list);
-		}
+		public static implicit operator RandomList<T>(List<T> list) => new RandomList<T>(list);
 
 		public struct Enumerator : IEnumerator<T>
 		{
