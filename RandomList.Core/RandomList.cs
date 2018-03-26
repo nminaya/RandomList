@@ -40,10 +40,7 @@ namespace RandomList.Core
 		/// is empty and has the default 
 		/// initial capacity
 		/// </summary>
-		public RandomList()
-		{
-			_randomIndexs = BuildRandomIndexs();
-		}
+		public RandomList() => _randomIndexs = BuildRandomIndexs();
 
 		/// <summary>
 		/// Initializes a new instance of RandomList class with the given Collection
