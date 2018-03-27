@@ -13,6 +13,8 @@ namespace RandomList.Core
 	{
 		private readonly List<T> _list = new List<T>();
 
+		private readonly Random _random = new Random();
+
 		/// <summary>
 		/// Array of random numbers for indexs
 		/// </summary>
@@ -134,6 +136,17 @@ namespace RandomList.Core
 		public void Randomize() => _randomIndexs = BuildRandomIndexs();
 
 		/// <summary>
+		/// Get an item randomly from the collection
+		/// </summary>
+		/// <returns>An item from the collection</returns>
+		public T GetItemRandomly()
+		{
+			int randomIndex = _random.Next(_list.Count);
+
+			return _list[randomIndex];
+		}
+
+		/// <summary>
 		/// Returns an enumerator that iterates through the collection
 		/// </summary>
 		/// <returns>
@@ -161,11 +174,10 @@ namespace RandomList.Core
 		private int[] BuildRandomIndexs()
 		{
 			var nums = Enumerable.Range(0, _list.Count).ToArray();
-			var rnd = new Random();
 
 			for (int i = 0; i < nums.Length; ++i)
 			{
-				int randomIndex = rnd.Next(nums.Length);
+				int randomIndex = _random.Next(nums.Length);
 				int temp = nums[randomIndex];
 				nums[randomIndex] = nums[i];
 				nums[i] = temp;
