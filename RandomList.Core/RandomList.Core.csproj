@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Nelson Minaya</Authors>
+    <Product>RandomList</Product>
+    <Description>RandomList it's basically a Collection of items that can be iterated randomly.</Description>
+    <Copyright></Copyright>
+    <PackageLicenseUrl>https://github.com/nminaya/RandomList/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/nminaya/RandomList/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nminaya/RandomList/</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
