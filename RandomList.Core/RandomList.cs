@@ -37,7 +37,9 @@ namespace RandomList.Core
 			set
 			{
 				if (index > _list.Count || index < 0)
+				{
 					throw new IndexOutOfRangeException();
+				}
 
 				_list[_randomIndexs[index]] = value;
 			}
@@ -61,7 +63,9 @@ namespace RandomList.Core
 		public RandomList(IEnumerable<T> list)
 		{
 			if (list == null)
+			{
 				throw new ArgumentNullException(nameof(list));
+			}
 
 			_list = list.ToList();
 			_randomIndexs = BuildRandomIndexs();
@@ -135,7 +139,9 @@ namespace RandomList.Core
 			bool removedOk = _list.Remove(item);
 
 			if (removedOk)
+			{
 				_randomIndexs = BuildRandomIndexs();
+			}
 
 			return removedOk;
 		}
@@ -231,7 +237,9 @@ namespace RandomList.Core
 				get
 				{
 					if ((_cursor < 0) || (_cursor == _list.Count))
+					{
 						throw new InvalidOperationException();
+					}
 
 					return _list[_randomIndexs[_cursor]];
 				}
@@ -242,10 +250,7 @@ namespace RandomList.Core
 			/// </summary>
 			object IEnumerator.Current => this.Current;
 
-			public void Dispose()
-			{
-				_list.GetEnumerator().Dispose();
-			}
+			public void Dispose() => _list.GetEnumerator().Dispose();
 
 			/// <summary>
 			/// Advances the enumerator to the next element of the collection
@@ -254,7 +259,9 @@ namespace RandomList.Core
 			public bool MoveNext()
 			{
 				if (_cursor < _list.Count)
+				{
 					_cursor++;
+				}
 
 				return _cursor != _list.Count;
 			}
@@ -262,10 +269,7 @@ namespace RandomList.Core
 			/// <summary>
 			/// Sets the enumerator to its initial position
 			/// </summary>
-			public void Reset()
-			{
-				_cursor = -1;
-			}
+			public void Reset() => _cursor = -1;
 		}
 	}
 }
