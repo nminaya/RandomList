@@ -11,8 +11,14 @@ namespace RandomList.Core
 	/// <typeparam name="T">The type of elements in the collection</typeparam>
 	public class RandomList<T> : ICollection<T>
 	{
+		/// <summary>
+		/// Internal list
+		/// </summary>
 		private readonly List<T> _list;
 
+		/// <summary>
+		/// Random instance
+		/// </summary>
 		private readonly Random _random = new Random();
 
 		/// <summary>
