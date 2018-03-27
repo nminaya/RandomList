@@ -11,7 +11,7 @@ namespace RandomList.Core
 	/// <typeparam name="T">The type of elements in the collection</typeparam>
 	public class RandomList<T> : ICollection<T>
 	{
-		private readonly List<T> _list = new List<T>();
+		private readonly List<T> _list;
 
 		private readonly Random _random = new Random();
 
@@ -42,7 +42,11 @@ namespace RandomList.Core
 		/// is empty and has the default 
 		/// initial capacity
 		/// </summary>
-		public RandomList() => _randomIndexs = BuildRandomIndexs();
+		public RandomList()
+		{
+			_list = new List<T>();
+			_randomIndexs = BuildRandomIndexs();
+		}
 
 		/// <summary>
 		/// Initializes a new instance of RandomList class with the given Collection
