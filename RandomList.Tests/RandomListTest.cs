@@ -80,5 +80,18 @@ namespace RandomList.Tests
 			// Ok if contains any false value
 			Assert.Contains(equalValues, v => !v);
 		}
+
+		[Fact(DisplayName = nameof(GetItemRandomly))]
+		public void GetItemRandomly()
+		{
+			// Arrange
+			var randList = new RandomList<int>(Enumerable.Range(0, 10));
+
+			// Act
+			int item = randList.GetItemRandomly();
+
+			// Assert
+			Assert.Contains(item, randList);
+		}
 	}
 }
