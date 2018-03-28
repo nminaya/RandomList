@@ -20,4 +20,8 @@ The elements are not in the same order in wich they were added. That's because R
 
 # Installation:
 
-Via Nuget: Install-Package RandomList.Core
+It is available on Nuget. To install via Package Manager Console:
+
+```Jekyll
+PM> Install-Package RandomList.Core
+```
