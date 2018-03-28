@@ -12,4 +12,8 @@
     <RepositoryUrl>https://github.com/nminaya/RandomList/</RepositoryUrl>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\RandomList.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>
