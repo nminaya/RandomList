@@ -25,3 +25,31 @@ It is available on Nuget. To install via Package Manager Console:
 ```Jekyll
 PM> Install-Package RandomList.Core
 ```
+
+Or browsing "RandomList" through NuGet VS VSIX.
+
+# Features:
+### Randomize method:
+
+Having a RandomList, you can randomize the order of the elements again.
+
+```csharp
+var randomList = new RandomList<int>{ 1, 2, 3, 4};
+
+// actual order of elements: 2, 1, 4, 3
+
+//Randomizing
+randomList.Randomize();
+
+// new order of elements: 3, 1, 2, 4
+```
+
+### GetItemRandomly method:
+Having a RandomList, you can get an element randomly.
+
+```csharp
+var randomList = new RandomList<int>{ 1, 2, 3, 4};
+
+// Getting an item 
+int item = randomList.GetItemRandomly();
+```
