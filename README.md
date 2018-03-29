@@ -1,7 +1,7 @@
 # RandomList
 RandomList it's basically a Collection of items that can be iterated randomly.
 
-# Use:
+## Use:
 
 ```csharp
    // Creating a RandomList of string 
@@ -18,7 +18,7 @@ Then, when the collection is iterated:
 
 The elements are not in the same order in wich they were added. That's because RandomList randomizes the order of the elements.
 
-# Installation:
+## Installation:
 
 It is available on Nuget. To install via Package Manager Console:
 
@@ -28,7 +28,7 @@ PM> Install-Package RandomList.Core
 
 Or browsing "RandomList" through NuGet VS VSIX.
 
-# Features:
+## Features:
 ### Randomize method:
 
 Having a RandomList, you can randomize the order of the elements again.
