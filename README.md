@@ -1,3 +1,5 @@
+[![NuGet version](https://badge.fury.io/nu/firebaseNet.svg)](https://www.nuget.org/packages/RandomList.Core/)
+
 # RandomList
 RandomList it's basically a Collection of items that can be iterated randomly.
 
