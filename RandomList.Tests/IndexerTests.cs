@@ -84,5 +84,37 @@ namespace RandomList.Tests
 			// Assert
 			Assert.Throws<IndexOutOfRangeException>(action);
 		}
+
+        [Fact(DisplayName = nameof(GettingValue_Index_Equals_Count))]
+        public void GettingValue_Index_Equals_Count()
+        {
+            // Arrange
+            var randList = new RandomList<int> { 1 };
+
+            // Act 
+            Action action = () =>
+            {
+                var value = randList[1];
+            };
+
+            // Assert
+            Assert.Throws<IndexOutOfRangeException>(action);
+        }
+
+        [Fact(DisplayName = nameof(SettingValue_Index_Equals_Count))]
+        public void SettingValue_Index_Equals_Count()
+        {
+            // Arrange
+            var randList = new RandomList<int> { 1 };
+
+            // Act 
+            Action action = () =>
+            {
+                randList[1] = 10;
+            };
+
+            // Assert
+            Assert.Throws<IndexOutOfRangeException>(action);
+        }
 	}
 }
