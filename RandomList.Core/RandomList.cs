@@ -33,10 +33,10 @@ namespace RandomList.Core
 		/// <returns>The element at the specified index</returns>
 		public T this[int index]
 		{
-			get => (index > _list.Count || index < 0) ? throw new IndexOutOfRangeException() : _list[_randomIndexs[index]];
+			get => (index >= _list.Count || index < 0) ? throw new IndexOutOfRangeException() : _list[_randomIndexs[index]];
 			set
 			{
-				if (index > _list.Count || index < 0)
+				if (index >= _list.Count || index < 0)
 				{
 					throw new IndexOutOfRangeException();
 				}
