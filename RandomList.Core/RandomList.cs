@@ -37,9 +37,7 @@ namespace RandomList.Core
 			set
 			{
 				if (index >= _list.Count || index < 0)
-				{
 					throw new IndexOutOfRangeException();
-				}
 
 				_list[_randomIndexes[index]] = value;
 			}
@@ -53,7 +51,7 @@ namespace RandomList.Core
 		public RandomList()
 		{
 			_list = new List<T>();
-			_randomIndexes = BuildRandomIndexes();
+			BuildRandomIndexes();
 		}
 
 		/// <summary>
@@ -68,7 +66,7 @@ namespace RandomList.Core
 			}
 
 			_list = list.ToList();
-			_randomIndexes = BuildRandomIndexes();
+			BuildRandomIndexes();
 		}
 
 		/// <summary>
@@ -88,7 +86,7 @@ namespace RandomList.Core
 		public void Add(T item)
 		{
 			_list.Add(item);
-			_randomIndexes = BuildRandomIndexes(); // Reorganize indexes
+			BuildRandomIndexes(); // Shuffling
 		}
 
 		/// <summary>
@@ -97,7 +95,7 @@ namespace RandomList.Core
 		public void Clear()
 		{
 			_list.Clear();
-			_randomIndexes = BuildRandomIndexes();
+			BuildRandomIndexes();
 		}
 
 		/// <summary>
@@ -139,9 +137,7 @@ namespace RandomList.Core
 			bool removedOk = _list.Remove(item);
 
 			if (removedOk)
-			{
-				_randomIndexes = BuildRandomIndexes();
-			}
+				BuildRandomIndexes();
 
 			return removedOk;
 		}
@@ -149,7 +145,7 @@ namespace RandomList.Core
 		/// <summary>
 		/// Randomize the collection again
 		/// </summary>
-		public void Randomize() => _randomIndexes = BuildRandomIndexes();
+		public void Randomize() => BuildRandomIndexes();
 
 		/// <summary>
 		/// Get an item randomly from the collection
@@ -187,7 +183,7 @@ namespace RandomList.Core
 		/// Generate an int array of random numbers
 		/// </summary>
 		/// <returns>array of random numbers</returns>
-		private int[] BuildRandomIndexes()
+		private void BuildRandomIndexes()
 		{
 			var nums = Enumerable.Range(0, _list.Count).ToArray();
 
@@ -196,7 +192,7 @@ namespace RandomList.Core
 				Swap(ref nums[i], ref nums[i + _random.Next(nums.Length - i)]);
 			}
 
-			return nums;
+			_randomIndexes = nums;
 
 			void Swap(ref int a, ref int b)
 			{
