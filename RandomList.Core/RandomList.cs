@@ -12,7 +12,7 @@ namespace RandomList.Core
 	public class RandomList<T> : ICollection<T>
 	{
 		/// <summary>
-		/// Internal list
+		/// Internal list for backing data
 		/// </summary>
 		private readonly List<T> _list;
 
@@ -51,7 +51,7 @@ namespace RandomList.Core
 		public RandomList()
 		{
 			_list = new List<T>();
-			BuildRandomIndexes();
+			ShuffleRandomIndexes();
 		}
 
 		/// <summary>
@@ -61,12 +61,10 @@ namespace RandomList.Core
 		public RandomList(IEnumerable<T> list)
 		{
 			if (list == null)
-			{
 				throw new ArgumentNullException(nameof(list));
-			}
 
 			_list = list.ToList();
-			BuildRandomIndexes();
+			ShuffleRandomIndexes();
 		}
 
 		/// <summary>
@@ -86,7 +84,7 @@ namespace RandomList.Core
 		public void Add(T item)
 		{
 			_list.Add(item);
-			BuildRandomIndexes(); // Shuffling
+			ShuffleRandomIndexes();
 		}
 
 		/// <summary>
@@ -95,7 +93,7 @@ namespace RandomList.Core
 		public void Clear()
 		{
 			_list.Clear();
-			BuildRandomIndexes();
+			ShuffleRandomIndexes();
 		}
 
 		/// <summary>
@@ -137,7 +135,7 @@ namespace RandomList.Core
 			bool removedOk = _list.Remove(item);
 
 			if (removedOk)
-				BuildRandomIndexes();
+				ShuffleRandomIndexes();
 
 			return removedOk;
 		}
@@ -145,7 +143,7 @@ namespace RandomList.Core
 		/// <summary>
 		/// Randomize the collection again
 		/// </summary>
-		public void Randomize() => BuildRandomIndexes();
+		public void Randomize() => ShuffleRandomIndexes();
 
 		/// <summary>
 		/// Get an item randomly from the collection
@@ -165,7 +163,7 @@ namespace RandomList.Core
 		/// An System.Collections.IEnumerator object that can be 
 		/// used to iterate through the collection
 		/// </returns>
-		IEnumerator IEnumerable.GetEnumerator() => new Enumerator(_list, _randomIndexes);
+		IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
 		/// <summary>
 		/// Returns an enumerator that iterates through the collection
@@ -183,7 +181,7 @@ namespace RandomList.Core
 		/// Generate an int array of random numbers
 		/// </summary>
 		/// <returns>array of random numbers</returns>
-		private void BuildRandomIndexes()
+		private void ShuffleRandomIndexes()
 		{
 			var nums = Enumerable.Range(0, _list.Count).ToArray();
 
@@ -207,69 +205,5 @@ namespace RandomList.Core
 		/// </summary>
 		/// <param name="list">List</param>
 		public static implicit operator RandomList<T>(List<T> list) => new RandomList<T>(list);
-
-		public struct Enumerator : IEnumerator<T>
-		{
-			private readonly List<T> _list;
-
-			/// <summary>
-			/// Array of random numbers for indexes
-			/// </summary>
-			private readonly int[] _randomIndexes;
-
-			/// <summary>
-			/// Current index
-			/// </summary>
-			private int _cursor;
-
-			public Enumerator(List<T> list, int[] randomIndexes)
-			{
-				_list = list;
-				_randomIndexes = randomIndexes;
-				_cursor = -1;
-			}
-
-			/// <summary>
-			/// Gets the element in the collection at the current position of the enumerator
-			/// </summary>
-			public T Current
-			{
-				get
-				{
-					if ((_cursor < 0) || (_cursor == _list.Count))
-					{
-						throw new InvalidOperationException();
-					}
-
-					return _list[_randomIndexes[_cursor]];
-				}
-			}
-
-			/// <summary>
-			/// Gets the element in the collection at the current position of the enumerator
-			/// </summary>
-			object IEnumerator.Current => this.Current;
-
-			public void Dispose() => _list.GetEnumerator().Dispose();
-
-			/// <summary>
-			/// Advances the enumerator to the next element of the collection
-			/// </summary>
-			/// <returns>true if the enumerator was successfully advanced to the next element</returns>
-			public bool MoveNext()
-			{
-				if (_cursor < _list.Count)
-				{
-					_cursor++;
-				}
-
-				return _cursor != _list.Count;
-			}
-
-			/// <summary>
-			/// Sets the enumerator to its initial position
-			/// </summary>
-			public void Reset() => _cursor = -1;
-		}
 	}
 }
