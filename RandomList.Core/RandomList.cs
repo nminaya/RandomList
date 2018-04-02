@@ -193,13 +193,17 @@ namespace RandomList.Core
 
 			for (int i = 0; i < nums.Length; ++i)
 			{
-				int randomIndex = _random.Next(nums.Length);
-				int temp = nums[randomIndex];
-				nums[randomIndex] = nums[i];
-				nums[i] = temp;
+				Swap(ref nums[i], ref nums[i + _random.Next(nums.Length - i)]);
 			}
 
 			return nums;
+
+			void Swap(ref int a, ref int b)
+			{
+				int t = a;
+				a = b;
+				b = t;
+			}
 		}
 
 		/// <summary>
