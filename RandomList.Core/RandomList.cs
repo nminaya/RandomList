@@ -22,9 +22,9 @@ namespace RandomList.Core
 		private readonly Random _random = new Random();
 
 		/// <summary>
-		/// Array of random numbers for indexs
+		/// Array of random numbers for indexes
 		/// </summary>
-		private int[] _randomIndexs;
+		private int[] _randomIndexes;
 
 		/// <summary>
 		/// Gets or sets the element at the specified index
@@ -33,7 +33,7 @@ namespace RandomList.Core
 		/// <returns>The element at the specified index</returns>
 		public T this[int index]
 		{
-			get => (index >= _list.Count || index < 0) ? throw new IndexOutOfRangeException() : _list[_randomIndexs[index]];
+			get => (index >= _list.Count || index < 0) ? throw new IndexOutOfRangeException() : _list[_randomIndexes[index]];
 			set
 			{
 				if (index >= _list.Count || index < 0)
@@ -41,7 +41,7 @@ namespace RandomList.Core
 					throw new IndexOutOfRangeException();
 				}
 
-				_list[_randomIndexs[index]] = value;
+				_list[_randomIndexes[index]] = value;
 			}
 		}
 
@@ -53,7 +53,7 @@ namespace RandomList.Core
 		public RandomList()
 		{
 			_list = new List<T>();
-			_randomIndexs = BuildRandomIndexs();
+			_randomIndexes = BuildRandomIndexes();
 		}
 
 		/// <summary>
@@ -68,7 +68,7 @@ namespace RandomList.Core
 			}
 
 			_list = list.ToList();
-			_randomIndexs = BuildRandomIndexs();
+			_randomIndexes = BuildRandomIndexes();
 		}
 
 		/// <summary>
@@ -88,7 +88,7 @@ namespace RandomList.Core
 		public void Add(T item)
 		{
 			_list.Add(item);
-			_randomIndexs = BuildRandomIndexs(); // Reorganize indexs
+			_randomIndexes = BuildRandomIndexes(); // Reorganize indexes
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace RandomList.Core
 		public void Clear()
 		{
 			_list.Clear();
-			_randomIndexs = BuildRandomIndexs();
+			_randomIndexes = BuildRandomIndexes();
 		}
 
 		/// <summary>
@@ -122,7 +122,7 @@ namespace RandomList.Core
 		{
 			for (int i = arrayIndex, j = 0; i < _list.Count; i++, j++)
 			{
-				array[i] = _list[_randomIndexs[j]];
+				array[i] = _list[_randomIndexes[j]];
 			}
 		}
 
@@ -140,7 +140,7 @@ namespace RandomList.Core
 
 			if (removedOk)
 			{
-				_randomIndexs = BuildRandomIndexs();
+				_randomIndexes = BuildRandomIndexes();
 			}
 
 			return removedOk;
@@ -149,7 +149,7 @@ namespace RandomList.Core
 		/// <summary>
 		/// Randomize the collection again
 		/// </summary>
-		public void Randomize() => _randomIndexs = BuildRandomIndexs();
+		public void Randomize() => _randomIndexes = BuildRandomIndexes();
 
 		/// <summary>
 		/// Get an item randomly from the collection
@@ -169,7 +169,7 @@ namespace RandomList.Core
 		/// An System.Collections.IEnumerator object that can be 
 		/// used to iterate through the collection
 		/// </returns>
-		IEnumerator IEnumerable.GetEnumerator() => new Enumerator(_list, _randomIndexs);
+		IEnumerator IEnumerable.GetEnumerator() => new Enumerator(_list, _randomIndexes);
 
 		/// <summary>
 		/// Returns an enumerator that iterates through the collection
@@ -179,7 +179,7 @@ namespace RandomList.Core
 		{
 			for (int i = 0; i < _list.Count; i++)
 			{
-				yield return _list[_randomIndexs[i]];
+				yield return _list[_randomIndexes[i]];
 			}
 		}
 
@@ -187,7 +187,7 @@ namespace RandomList.Core
 		/// Generate an int array of random numbers
 		/// </summary>
 		/// <returns>array of random numbers</returns>
-		private int[] BuildRandomIndexs()
+		private int[] BuildRandomIndexes()
 		{
 			var nums = Enumerable.Range(0, _list.Count).ToArray();
 
@@ -213,19 +213,19 @@ namespace RandomList.Core
 			private readonly List<T> _list;
 
 			/// <summary>
-			/// Array of random numbers for indexs
+			/// Array of random numbers for indexes
 			/// </summary>
-			private readonly int[] _randomIndexs;
+			private readonly int[] _randomIndexes;
 
 			/// <summary>
 			/// Current index
 			/// </summary>
 			private int _cursor;
 
-			public Enumerator(List<T> list, int[] randomIndexs)
+			public Enumerator(List<T> list, int[] randomIndexes)
 			{
 				_list = list;
-				_randomIndexs = randomIndexs;
+				_randomIndexes = randomIndexes;
 				_cursor = -1;
 			}
 
@@ -241,7 +241,7 @@ namespace RandomList.Core
 						throw new InvalidOperationException();
 					}
 
-					return _list[_randomIndexs[_cursor]];
+					return _list[_randomIndexes[_cursor]];
 				}
 			}
 
