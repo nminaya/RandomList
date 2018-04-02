@@ -27,17 +27,34 @@ namespace RandomList.Core
 		private int[] _randomIndexes;
 
 		/// <summary>
+		/// Flag for when collection has changed (item added or removed)
+		/// </summary>
+		private bool _collectionChanged;
+
+		/// <summary>
 		/// Gets or sets the element at the specified index
 		/// </summary>
 		/// <param name="index">The zero-based index of the element to get or set</param>
 		/// <returns>The element at the specified index</returns>
 		public T this[int index]
 		{
-			get => (index >= _list.Count || index < 0) ? throw new IndexOutOfRangeException() : _list[_randomIndexes[index]];
+			get
+			{
+				if (index >= _list.Count || index < 0)
+					throw new IndexOutOfRangeException();
+
+				if (_collectionChanged)
+					ShuffleRandomIndexes();
+
+				return _list[_randomIndexes[index]];
+			}
 			set
 			{
 				if (index >= _list.Count || index < 0)
 					throw new IndexOutOfRangeException();
+
+				if (_collectionChanged)
+					ShuffleRandomIndexes();
 
 				_list[_randomIndexes[index]] = value;
 			}
@@ -84,7 +101,7 @@ namespace RandomList.Core
 		public void Add(T item)
 		{
 			_list.Add(item);
-			ShuffleRandomIndexes();
+			_collectionChanged = true;
 		}
 
 		/// <summary>
@@ -93,7 +110,7 @@ namespace RandomList.Core
 		public void Clear()
 		{
 			_list.Clear();
-			ShuffleRandomIndexes();
+			_collectionChanged = true;
 		}
 
 		/// <summary>
@@ -116,6 +133,9 @@ namespace RandomList.Core
 		/// <param name="arrayIndex">The zero-based index in array at which copying begins</param>
 		public void CopyTo(T[] array, int arrayIndex)
 		{
+			if (_collectionChanged)
+				ShuffleRandomIndexes();
+
 			for (int i = arrayIndex, j = 0; i < _list.Count; i++, j++)
 			{
 				array[i] = _list[_randomIndexes[j]];
@@ -135,7 +155,7 @@ namespace RandomList.Core
 			bool removedOk = _list.Remove(item);
 
 			if (removedOk)
-				ShuffleRandomIndexes();
+				_collectionChanged = true;
 
 			return removedOk;
 		}
@@ -171,6 +191,9 @@ namespace RandomList.Core
 		/// <returns> An enumerator that can be used to iterate through the collection</returns>
 		public IEnumerator<T> GetEnumerator()
 		{
+			if (_collectionChanged)
+				ShuffleRandomIndexes();
+
 			for (int i = 0; i < _list.Count; i++)
 			{
 				yield return _list[_randomIndexes[i]];
@@ -191,7 +214,8 @@ namespace RandomList.Core
 			}
 
 			_randomIndexes = nums;
-
+			_collectionChanged = false;
+			
 			void Swap(ref int a, ref int b)
 			{
 				int t = a;
