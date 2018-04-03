@@ -210,17 +210,21 @@ namespace RandomList.Core
 
 			for (int i = 0; i < nums.Length; ++i)
 			{
-				Swap(ref nums[i], ref nums[i + _random.Next(nums.Length - i)]);
+				// Fisher-Yates shuffle algorithm
+				int randomIndex = i + _random.Next(nums.Length - i);
+
+				if(i != randomIndex)
+					Swap(ref nums[i], ref nums[randomIndex]);
 			}
 
 			_randomIndexes = nums;
 			_collectionChanged = false;
-			
+
 			void Swap(ref int a, ref int b)
 			{
-				int t = a;
+				int temp = a;
 				a = b;
-				b = t;
+				b = temp;
 			}
 		}
 
