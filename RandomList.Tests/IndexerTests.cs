@@ -60,10 +60,7 @@ namespace RandomList.Tests
 			var randList = new RandomList<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
 			// Act
-			Action action = () =>
-			{
-				randList[-5] = 10;
-			};
+			Action action = () => randList[-5] = 10;
 
 			// Assert
 			Assert.Throws<IndexOutOfRangeException>(action);
@@ -76,10 +73,7 @@ namespace RandomList.Tests
 			var randList = new RandomList<int> { 1, 2 };
 
 			// Act
-			Action action = () =>
-			{
-				randList[2] = 100;
-			};
+			Action action = () => randList[2] = 100;
 
 			// Assert
 			Assert.Throws<IndexOutOfRangeException>(action);
@@ -108,10 +102,7 @@ namespace RandomList.Tests
             var randList = new RandomList<int> { 1 };
 
             // Act 
-            Action action = () =>
-            {
-                randList[1] = 10;
-            };
+            Action action = () => randList[1] = 10;
 
             // Assert
             Assert.Throws<IndexOutOfRangeException>(action);
