@@ -48,6 +48,19 @@ namespace RandomList.Tests
 			Assert.True(0 == randList.Count);
 		}
 
+		[Fact(DisplayName = nameof(Removing_NonExistentItem))]
+		public void Removing_NonExistentItem()
+		{
+			// Arrange
+			var randList = new RandomList<int> { 1, 2, 3 };
+
+			// Act
+			bool resutl = randList.Remove(5);
+
+			// Assert
+			Assert.False(resutl);
+		}
+
 		[Fact(DisplayName = nameof(ClearList))]
 		public void ClearList()
 		{

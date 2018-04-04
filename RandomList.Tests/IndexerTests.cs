@@ -11,7 +11,7 @@ namespace RandomList.Tests
 		public void Setting_And_Getting_Value()
 		{
 			// Arrange
-			var randList = new RandomList<int>(Enumerable.Range(0,10));
+			var randList = new RandomList<int>(Enumerable.Range(0, 10));
 
 			// Act
 			randList[5] = 20;
@@ -60,10 +60,7 @@ namespace RandomList.Tests
 			var randList = new RandomList<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
 			// Act
-			Action action = () =>
-			{
-				randList[-5] = 10;
-			};
+			Action action = () => randList[-5] = 10;
 
 			// Assert
 			Assert.Throws<IndexOutOfRangeException>(action);
@@ -76,10 +73,36 @@ namespace RandomList.Tests
 			var randList = new RandomList<int> { 1, 2 };
 
 			// Act
+			Action action = () => randList[2] = 100;
+
+			// Assert
+			Assert.Throws<IndexOutOfRangeException>(action);
+		}
+
+		[Fact(DisplayName = nameof(GettingValue_Index_Equals_Count))]
+		public void GettingValue_Index_Equals_Count()
+		{
+			// Arrange
+			var randList = new RandomList<int> { 1 };
+
+			// Act 
 			Action action = () =>
 			{
-				randList[2] = 100;
+				var value = randList[1];
 			};
+
+			// Assert
+			Assert.Throws<IndexOutOfRangeException>(action);
+		}
+
+		[Fact(DisplayName = nameof(SettingValue_Index_Equals_Count))]
+		public void SettingValue_Index_Equals_Count()
+		{
+			// Arrange
+			var randList = new RandomList<int> { 1 };
+
+			// Act 
+			Action action = () => randList[1] = 10;
 
 			// Assert
 			Assert.Throws<IndexOutOfRangeException>(action);
