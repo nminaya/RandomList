@@ -29,7 +29,7 @@ namespace RandomList.Core
 		/// <summary>
 		/// Flag for when collection has changed (item added or removed)
 		/// </summary>
-		private bool _collectionChanged;
+		private bool _collectionHasChanged;
 
 		/// <summary>
 		/// Gets or sets the element at the specified index
@@ -43,7 +43,7 @@ namespace RandomList.Core
 				if (index >= _list.Count || index < 0)
 					throw new IndexOutOfRangeException();
 
-				if (_collectionChanged)
+				if (_collectionHasChanged)
 					ShuffleRandomIndexes();
 
 				return _list[_randomIndexes[index]];
@@ -53,7 +53,7 @@ namespace RandomList.Core
 				if (index >= _list.Count || index < 0)
 					throw new IndexOutOfRangeException();
 
-				if (_collectionChanged)
+				if (_collectionHasChanged)
 					ShuffleRandomIndexes();
 
 				_list[_randomIndexes[index]] = value;
@@ -101,7 +101,7 @@ namespace RandomList.Core
 		public void Add(T item)
 		{
 			_list.Add(item);
-			_collectionChanged = true;
+			_collectionHasChanged = true;
 		}
 
 		/// <summary>
@@ -110,7 +110,7 @@ namespace RandomList.Core
 		public void Clear()
 		{
 			_list.Clear();
-			_collectionChanged = true;
+			_collectionHasChanged = true;
 		}
 
 		/// <summary>
@@ -133,7 +133,7 @@ namespace RandomList.Core
 		/// <param name="arrayIndex">The zero-based index in array at which copying begins</param>
 		public void CopyTo(T[] array, int arrayIndex)
 		{
-			if (_collectionChanged)
+			if (_collectionHasChanged)
 				ShuffleRandomIndexes();
 
 			for (int i = arrayIndex, j = 0; i < _list.Count; i++, j++)
@@ -155,7 +155,7 @@ namespace RandomList.Core
 			bool removedOk = _list.Remove(item);
 
 			if (removedOk)
-				_collectionChanged = true;
+				_collectionHasChanged = true;
 
 			return removedOk;
 		}
@@ -191,7 +191,7 @@ namespace RandomList.Core
 		/// <returns> An enumerator that can be used to iterate through the collection</returns>
 		public IEnumerator<T> GetEnumerator()
 		{
-			if (_collectionChanged)
+			if (_collectionHasChanged)
 				ShuffleRandomIndexes();
 
 			for (int i = 0; i < _list.Count; i++)
@@ -218,7 +218,7 @@ namespace RandomList.Core
 			}
 
 			_randomIndexes = nums;
-			_collectionChanged = false;
+			_collectionHasChanged = false;
 
 			void Swap(ref int a, ref int b)
 			{
