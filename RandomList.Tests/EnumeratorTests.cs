@@ -6,7 +6,7 @@ namespace RandomList.Tests
 {
 	public class EnumeratorTests
 	{
-		[Fact(DisplayName = nameof(GetEnumerator))]
+		[Fact]
 		public void GetEnumerator()
 		{
 			// Arrange
@@ -19,7 +19,7 @@ namespace RandomList.Tests
 			Assert.NotNull(enumerator);
 		}
 
-		[Fact(DisplayName = nameof(MoveNext_On_EmptyList))]
+		[Fact]
 		public void MoveNext_On_EmptyList()
 		{
 			// Arrange
@@ -33,7 +33,7 @@ namespace RandomList.Tests
 			Assert.False(result);
 		}
 
-		[Fact(DisplayName = nameof(MoveNext__On_NotEmptyList))]
+		[Fact]
 		public void MoveNext__On_NotEmptyList()
 		{
 			// Arrange
@@ -47,7 +47,7 @@ namespace RandomList.Tests
 			Assert.True(result);
 		}
 
-		[Fact(DisplayName = nameof(MoveNext_ThroughCollection))]
+		[Fact]
 		public void MoveNext_ThroughCollection()
 		{
 			// Arrange
