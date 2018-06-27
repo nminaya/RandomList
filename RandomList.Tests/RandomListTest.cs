@@ -8,7 +8,7 @@ namespace RandomList.Tests
 {
 	public class RandomListTest
 	{
-		[Fact(DisplayName = nameof(CreatingInstance))]
+		[Fact]
 		public void CreatingInstance()
 		{
 			// Act
@@ -18,7 +18,7 @@ namespace RandomList.Tests
 			Assert.True(randList.Count == 0);
 		}
 
-		[Fact(DisplayName = nameof(CreatingInstance_Passing_IEnumerable))]
+		[Fact]
 		public void CreatingInstance_Passing_IEnumerable()
 		{
 			// Arrange
@@ -31,7 +31,7 @@ namespace RandomList.Tests
 			Assert.True(randList.Count == list.Count());
 		}
 
-		[Fact(DisplayName = nameof(CreatingInstance_Passing_Null_IEnumerable))]
+		[Fact]
 		public void CreatingInstance_Passing_Null_IEnumerable()
 		{
 			// Arrange
@@ -47,7 +47,7 @@ namespace RandomList.Tests
 			Assert.Throws<ArgumentNullException>(action);
 		}
 
-		[Fact(DisplayName = nameof(Casting_List_To_RandomList))]
+		[Fact]
 		public void Casting_List_To_RandomList()
 		{
 			// Act
@@ -60,7 +60,7 @@ namespace RandomList.Tests
 			Assert.True(list.Count == randList.Count);
 		}
 
-		[Fact(DisplayName = nameof(Randomizing))]
+		[Fact]
 		public void Randomizing()
 		{
 			// Arrange
@@ -81,7 +81,7 @@ namespace RandomList.Tests
 			Assert.Contains(equalValues, v => !v);
 		}
 
-		[Fact(DisplayName = nameof(GetItemRandomly))]
+		[Fact]
 		public void GetItemRandomly()
 		{
 			// Arrange
