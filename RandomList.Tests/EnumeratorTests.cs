@@ -34,7 +34,7 @@ namespace RandomList.Tests
 		}
 
 		[Fact]
-		public void MoveNext__On_NotEmptyList()
+		public void MoveNext_On_NotEmptyList()
 		{
 			// Arrange
 			var randList = new RandomList<int> { 1, 2, 3 };
