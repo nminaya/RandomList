@@ -24,7 +24,7 @@ namespace RandomList.Tests
 			Assert.True(itemsCount == randList.Count);
 		}
 
-		[Theory(DisplayName = nameof(RemovingItems))]
+		[Theory]
 		[InlineData(1)]
 		[InlineData(100)]
 		[InlineData(1000)]
@@ -48,7 +48,7 @@ namespace RandomList.Tests
 			Assert.True(0 == randList.Count);
 		}
 
-		[Fact(DisplayName = nameof(Removing_NonExistentItem))]
+		[Fact]
 		public void Removing_NonExistentItem()
 		{
 			// Arrange
@@ -61,7 +61,7 @@ namespace RandomList.Tests
 			Assert.False(resutl);
 		}
 
-		[Fact(DisplayName = nameof(ClearList))]
+		[Fact]
 		public void ClearList()
 		{
 			// Arrange
@@ -79,7 +79,7 @@ namespace RandomList.Tests
 			Assert.True(0 == randList.Count);
 		}
 
-		[Fact(DisplayName = nameof(Contains_TrulyContains))]
+		[Fact]
 		public void Contains_TrulyContains()
 		{
 			// Arrange
@@ -92,7 +92,7 @@ namespace RandomList.Tests
 			Assert.True(result);
 		}
 
-		[Fact(DisplayName = nameof(Contains_NotContains))]
+		[Fact]
 		public void Contains_NotContains()
 		{
 			// Arrange
@@ -105,7 +105,7 @@ namespace RandomList.Tests
 			Assert.False(result);
 		}
 
-		[Fact(DisplayName = nameof(Array_CopyTo))]
+		[Fact]
 		public void Array_CopyTo()
 		{
 			// Arrange

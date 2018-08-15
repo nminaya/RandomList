@@ -7,7 +7,7 @@ namespace RandomList.Tests
 {
 	public class IndexerTests
 	{
-		[Fact(DisplayName = nameof(Setting_And_Getting_Value))]
+		[Fact]
 		public void Setting_And_Getting_Value()
 		{
 			// Arrange
@@ -21,7 +21,7 @@ namespace RandomList.Tests
 			Assert.True(value == 20);
 		}
 
-		[Fact(DisplayName = nameof(GettingValues_OutOfRange_NegativeIndex))]
+		[Fact]
 		public void GettingValues_OutOfRange_NegativeIndex()
 		{
 			// Arrange
@@ -37,7 +37,7 @@ namespace RandomList.Tests
 			Assert.Throws<IndexOutOfRangeException>(action);
 		}
 
-		[Fact(DisplayName = nameof(GettingValues_OutOfRange_IndexBiggerThanLength))]
+		[Fact]
 		public void GettingValues_OutOfRange_IndexBiggerThanLength()
 		{
 			// Arrange
@@ -53,7 +53,7 @@ namespace RandomList.Tests
 			Assert.Throws<IndexOutOfRangeException>(action);
 		}
 
-		[Fact(DisplayName = nameof(SettingValues_OutOfRange_NegativeIndex))]
+		[Fact]
 		public void SettingValues_OutOfRange_NegativeIndex()
 		{
 			// Arrange
@@ -66,7 +66,7 @@ namespace RandomList.Tests
 			Assert.Throws<IndexOutOfRangeException>(action);
 		}
 
-		[Fact(DisplayName = nameof(SettingValues_OutOfRange_IndexBiggerThanLength))]
+		[Fact]
 		public void SettingValues_OutOfRange_IndexBiggerThanLength()
 		{
 			// Arrange
@@ -79,7 +79,7 @@ namespace RandomList.Tests
 			Assert.Throws<IndexOutOfRangeException>(action);
 		}
 
-		[Fact(DisplayName = nameof(GettingValue_Index_Equals_Count))]
+		[Fact]
 		public void GettingValue_Index_Equals_Count()
 		{
 			// Arrange
@@ -95,7 +95,7 @@ namespace RandomList.Tests
 			Assert.Throws<IndexOutOfRangeException>(action);
 		}
 
-		[Fact(DisplayName = nameof(SettingValue_Index_Equals_Count))]
+		[Fact]
 		public void SettingValue_Index_Equals_Count()
 		{
 			// Arrange
