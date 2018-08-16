@@ -1,4 +1,6 @@
-[![NuGet version](https://lut.im/OEI5WbSXAz/dLdWUBIxQy8JPbCq.svg)](https://www.nuget.org/packages/RandomList.Core/)
+[![NuGet version](https://cdn.rawgit.com/nminaya/2e5d3d1e56c8f41ed47fb217142c41da/raw/40b5411a1fe0e08c056be7c2619b696a506ae740/nugetv.svg)](https://www.nuget.org/packages/RandomList.Core/)
+
+
 
 # RandomList
 RandomList it's basically a Collection of items that can be iterated randomly.
@@ -16,7 +18,7 @@ RandomList it's basically a Collection of items that can be iterated randomly.
 ```
 Then, when the collection is iterated:
 
-![example](https://lut.im/xFNQPeDzgB/V3RbzPwjKCv0KEp1.png)
+![example](https://i.imgur.com/DemuxKs.png)
 
 The elements are not in the same order in wich they were added. That's because RandomList randomizes the order of the elements.
 
