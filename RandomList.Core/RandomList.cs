@@ -80,7 +80,7 @@ namespace RandomList.Core
 			if (list == null)
 				throw new ArgumentNullException(nameof(list));
 
-			_list = list.ToList();
+			_list = new List<T>(list);
 			ShuffleRandomIndexes();
 		}
 
