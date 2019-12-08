@@ -1,4 +1,4 @@
-[![NuGet version](https://cdn.rawgit.com/nminaya/2e5d3d1e56c8f41ed47fb217142c41da/raw/40b5411a1fe0e08c056be7c2619b696a506ae740/nugetv.svg)](https://www.nuget.org/packages/RandomList.Core/)
+[![NuGet version](https://sendeyo.com/up/d/6de114c951)](https://www.nuget.org/packages/RandomList.Core/)
 
 
 
